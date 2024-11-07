@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 var/dbdata/*.sock
+var/dbdata/
