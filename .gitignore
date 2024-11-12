@@ -365,4 +365,5 @@ FodyWeavers.xsd
 var/dbdata/*.sock
 var/dbdata/
 Entities/ProjetGestionContext.cs 
+appsettings.json
 
