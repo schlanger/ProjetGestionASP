@@ -8,6 +8,7 @@ using System.Net;
 [Route("api/[controller]")]
 public class UserController : ControllerBase
 {
+    // Appel à la classe de type DbContext pour la connexion à la base de données
     private readonly ProjetGestionContext _dbContext;
 
     public UserController(ProjetGestionContext dbContext)
@@ -15,6 +16,7 @@ public class UserController : ControllerBase
         _dbContext = dbContext;
     }
 
+    // Lister les utilisateurs
     [HttpGet("GetUsers")]
     public async Task<ActionResult<List<UserDTO>>> Get()
     {
@@ -38,6 +40,7 @@ public class UserController : ControllerBase
         }
     }
 
+    // Lire un utilisateur par son Id
     [HttpGet("GetUserById")]
     public async Task<ActionResult<UserDTO>> GetUserById(int Id)
     {
@@ -58,6 +61,7 @@ public class UserController : ControllerBase
         }
     }
 
+    // Ajouter un utilisateur
     [HttpPost("InsertUser")]
     public async Task<HttpStatusCode> InsertUser(UserDTO User)
     {
@@ -72,6 +76,7 @@ public class UserController : ControllerBase
         return HttpStatusCode.Created;
     }
 
+    // Modifier un utilisateur
     [HttpPut("UpdateUser")]
     public async Task<HttpStatusCode> UpdateUser(UserDTO User)
     {
@@ -83,6 +88,7 @@ public class UserController : ControllerBase
         return HttpStatusCode.OK;
     }
 
+    // Supprimer un utilisateur
     [HttpDelete("DeleteUser/{Id}")]
     public async Task<HttpStatusCode> DeleteUser(int Id)
     {
