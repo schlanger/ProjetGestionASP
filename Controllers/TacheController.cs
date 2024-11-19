@@ -79,6 +79,40 @@ public class TacheController : Controller
         return HttpStatusCode.Created;
     }
 
+    // Modifier une tâche
+    [HttpPut("UpdateTask")]
+    public async Task<HttpStatusCode> UpdateTask(TacheDTO Tache)
+    {
+        var entity = await _dbContext.Set<Tache>().FirstOrDefaultAsync(s => s.Id == Tache.Id);
+        if (entity == null)
+        {
+            return HttpStatusCode.NotFound;
+        }
+        else
+        {
+            entity.Titre = Tache.Titre;
+            entity.Contenu = Tache.Contenu;
+            entity.DateDeb = Tache.DateDeb;
+            entity.DateFin = Tache.DateFin;
+            await _dbContext.SaveChangesAsync();
+            return HttpStatusCode.OK;
+        }
+    }
+
+    // Supprimer une tâche
+    [HttpDelete("DeleteTask/{Id}")]
+    public async Task<HttpStatusCode> DeleteTask(int Id)
+    {
+        var entity = new Tache()
+        {
+            Id = Id
+        };
+        _dbContext.Set<Tache>().Attach(entity);
+        _dbContext.Set<Tache>().Remove(entity);
+        await _dbContext.SaveChangesAsync();
+        return HttpStatusCode.OK;
+    }
+
 
 
 }
