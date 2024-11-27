@@ -6,7 +6,7 @@ Projet Gestion est une application web développée en .NET 8 utilisant Entity F
 ## Prérequis
 - .NET 8 SDK
 - MySQL Server
-- Visual Studio 2022 (ou une autre IDE compatible)
+- Visual Studio 2022 (ou un autre IDE compatible)
 
 ## Installation
 
